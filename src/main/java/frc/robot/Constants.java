@@ -19,10 +19,10 @@ import edu.wpi.first.wpilibj.trajectory.TrapezoidProfile;
  */
 public final class Constants {
   public static final class DriveConstants {
-    public static final int kFrontLeftMotorPort = 0;
-    public static final int kRearLeftMotorPort = 1;
-    public static final int kFrontRightMotorPort = 2;
-    public static final int kRearRightMotorPort = 3;
+    public static final int ID_frontLeftMotor = 1;
+    public static final int ID_rearLeftMotor = 10;
+    public static final int ID_frontRightMotor = 2;
+    public static final int ID_rearRightMotor = 20;
 
     public static final int[] kFrontLeftEncoderPorts = new int[] {0, 1};
     public static final int[] kRearLeftEncoderPorts = new int[] {2, 3};
@@ -65,6 +65,39 @@ public final class Constants {
     public static final double kPRearLeftVel = 0.5;
     public static final double kPFrontRightVel = 0.5;
     public static final double kPRearRightVel = 0.5;
+
+    //Drivetrain
+    public static final double drivetrainMinPower = 0.05;
+    public static final double drivetrainMaxPower = 1.0;
+    public static final double manualVoltageRampingConstant = 1.0;
+    public static final double closedVoltageRampingConstant = 1.0;
+
+    public static final int PID_id = 0;
+    public static final double PID_Period = 1.0/20.0;
+    public static final double DrivetrainKf = 0.1797; //0.1797
+    public static final double DrivetrainkP = 0.02;
+
+    public static final double unitsPerRotation = 8192;
+    public static final double RPMsToUnitsPerHundredMilliseconds = 1.0/600.0;
+    public static final double desiredRPMsForDrive = 500.0;
+    public static final double maxDriveVelocity = 6000.0;
+    public static final double VelocityInputConversionFactor = desiredRPMsForDrive * unitsPerRotation * RPMsToUnitsPerHundredMilliseconds;
+
+
+    public static final int timeoutTime = 30;
+    public static final int mainFeedbackLoop = 0;
+
+    public static final double autoBackingDistance = 3.5; //3.5 rotations of the wheel ~ 65"
+    public static final double pathFollowingThreshold = 20;
+    public static final int autonomousDriveTime = 2500;
+    public static final double autonomousDriveSpeed = 0.7;
+    public static final double autonomousTurnRate = 0.7;
+
+    public static final double speedConstantForBallChase = 0.3;
+    public static final double maxAngleChangeForAlignFinish = 0.5;
+    public static final double maxAngleDifferenceBetweenNavXAndVision = 0.01;
+    public static final double alignTimeoutTime = 1000;
+    public static final double alignMemorySize = 3;
   }
 
   public static final class OIConstants {
