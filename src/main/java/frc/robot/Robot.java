@@ -28,7 +28,6 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
-    this.m_period = 0.05;
   }
 
   /**
@@ -74,11 +73,7 @@ public class Robot extends TimedRobot {
 
   /** This function is called periodically during autonomous. */
   @Override
-  public void autonomousPeriodic() {
-
-    
-
-  }
+  public void autonomousPeriodic() {}
 
   @Override
   public void teleopInit() {
