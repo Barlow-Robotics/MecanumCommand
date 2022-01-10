@@ -77,12 +77,12 @@ public class DriveSubsystem extends SubsystemBase {
   public void periodic() {
     // Update the odometry in the periodic block
     m_odometry.update( //needs to use .getwheelspeeds, but we only create it later on,,,
-        m_gyro.getRotation2d(), 
-        // m_rearLeft.getSelectedSensorPosition(), 
-        // m_rearRight.getSelectedSensorPosition()
-        // );
-        getCurrentWheelSpeeds()
-        );
+        m_gyro.getRotation2d(), m_rearLeft.getSelectedSensorPosition(), m_rearRight.getSelectedSensorPosition());
+        // new MecanumDriveWheelSpeeds(
+        //     m_frontLeftEncoder.getRate(),
+        //     m_rearLeftEncoder.getRate(),
+        //     m_frontRightEncoder.getRate(),
+        //     m_rearRightEncoder.getRate()));
   }
 
   /**
@@ -190,20 +190,18 @@ public class DriveSubsystem extends SubsystemBase {
   // }
 
   //why use that ??  ↓
-  /**
-   * Gets the current wheel speeds.
-   *
-   * @return the current wheel speeds in a MecanumDriveWheelSpeeds object.
-   */
-  public MecanumDriveWheelSpeeds getCurrentWheelSpeeds() {
-
-    // Multiplying ny 10.0 because Talon reports velocity as counts per 100 mSec.
-    return new MecanumDriveWheelSpeeds(
-      m_frontLeft.getSelectedSensorVelocity() * 10.0 ,
-      m_rearLeft.getSelectedSensorVelocity() * 10.0 ,
-      m_frontRight.getSelectedSensorVelocity() * 10.0 ,
-      m_rearRight.getSelectedSensorVelocity() * 10.0 ) ;
-}
+  // /**
+  //  * Gets the current wheel speeds.
+  //  *
+  //  * @return the current wheel speeds in a MecanumDriveWheelSpeeds object.
+  //  */
+  // public MecanumDriveWheelSpeeds getCurrentWheelSpeeds() {
+  //   return new MecanumDriveWheelSpeeds(
+  //       m_frontLeftEncoder.getRate(),
+  //       m_rearLeftEncoder.getRate(),
+  //       m_frontRightEncoder.getRate(),
+  //       m_rearRightEncoder.getRate());
+  // }
 
   /**
    * Sets the max output of the drive. Useful for scaling the drive to drive more slowly.
